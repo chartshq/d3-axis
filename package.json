@@ -1,6 +1,6 @@
 {
-  "name": "d3-axis",
-  "version": "1.0.8",
+  "name": "@viz/d3-axis",
+  "version": "1.0.9-rc.2",
   "description": "Displays automatic reference lines for scales.",
   "keywords": [
     "d3",
@@ -25,8 +25,7 @@
   "scripts": {
     "pretest": "rm -rf build && mkdir build && rollup --banner \"$(preamble)\" -f umd -n d3 -o build/d3-axis.js -- index.js",
     "test": "tape 'test/**/*-test.js' && eslint index.js src",
-    "prepublish": "npm run test && uglifyjs --preamble \"$(preamble)\" build/d3-axis.js -c -m -o build/d3-axis.min.js",
-    "postpublish": "git push && git push --tags && cd ../d3.github.com && git pull && cp ../d3-axis/build/d3-axis.js d3-axis.v1.js && cp ../d3-axis/build/d3-axis.min.js d3-axis.v1.min.js && git add d3-axis.v1.js d3-axis.v1.min.js && git commit -m \"d3-axis ${npm_package_version}\" && git push && cd - && zip -j build/d3-axis.zip -- LICENSE README.md build/d3-axis.js build/d3-axis.min.js"
+    "prepublishOnly": "npm run test && uglifyjs --preamble \"$(preamble)\" build/d3-axis.js -c -m -o build/d3-axis.min.js"
   },
   "devDependencies": {
     "d3-scale": "1",
